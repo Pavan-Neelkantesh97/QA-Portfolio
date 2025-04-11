@@ -1,0 +1,13 @@
+name: Weekly Portfolio Update
+on:
+  schedule:
+    - cron: "0 0 * * 0"  # Runs every Sunday
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          git config --global user.name "Automation Bot"
+          git add .
+          git commit -m "Auto-update portfolio" || echo "No changes"
+          git push
